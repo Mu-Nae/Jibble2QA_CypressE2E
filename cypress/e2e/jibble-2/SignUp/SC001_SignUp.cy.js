@@ -7,8 +7,14 @@ const chance = new Chance();
 
 describe("Signup Process", function () {
 	var x = Math.floor(Math.random() * (100 - 1)) + 1;
-	const y = chance.animal({ type: "zoo" });
-	var Email_Id = "Autosign+" + x + y + "@jibble.io";
+	const y = chance.string({
+		length: 8,
+		casing: "lower",
+		alpha: true,
+		numeric: true,
+		symbols: false,
+	});
+	var EmailId_Owner = "cypresstests+" + x + y + "@jibble.io";
 
 	it("Signup", function () {
 		//    cy.log("Enter signup detail for email" + Email_Id)

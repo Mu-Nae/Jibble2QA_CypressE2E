@@ -24,7 +24,7 @@ export class LoginPage {
 	}
 
 	getPasswordText() {
-		return cy.get("#input-65");
+		return cy.get("#input-61");
 	}
 
 	clickEyeButton() {
