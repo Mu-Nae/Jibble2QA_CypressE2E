@@ -6,10 +6,16 @@ const Chance = require("chance");
 const chance = new Chance();
 
 var x = Math.floor(Math.random() * (100 - 1)) + 1;
-const y = chance.animal({ type: "zoo" });
-var EmailId_Owner = "Autosign+" + x + y + "@jibble.io";
-var EmailId_UserA = "citradevi+userA" + x + y + "@jibble.io";
-var EmailId_UserB = "citradevi+userB" + x + y + "@jibble.io";
+const y = chance.string({
+	length: 8,
+	casing: "lower",
+	alpha: true,
+	numeric: true,
+	symbols: false,
+});
+var EmailId_Owner = "cypresstests+" + x + y + "@jibble.io";
+var EmailId_UserA = "cypresstests+userA" + x + y + "@jibble.io";
+var EmailId_UserB = "cypresstests+userB" + x + y + "@jibble.io";
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -53,7 +59,7 @@ Cypress.Commands.add("SignUp", () => {
 		method: "POST",
 		url: "https://identity.test.jibble.io/v1/register",
 		body: {
-			fullName: "Cypress Autosign",
+			fullName: "Cypress ApiSignup",
 			emailOrPhoneNumber: EmailId_Owner,
 			password: "testing123",
 			agreeOnNewsletters: true,
@@ -95,12 +101,14 @@ Cypress.Commands.add("CreateOrganization", () => {
 		},
 		body: {
 			name: "Auto",
-			"ICultureSettings/TimeZone": "Asia/Kuala_Lumpur",
+			"ICultureSettings/TimeZone": `${
+				Intl.DateTimeFormat().resolvedOptions().timeZone
+			}`,
 			"IOnboardingSettings/CompanySize": "From21To50",
 			"IOnboardingSettings/Industry": "Construction",
 			"IOrganizationProfileSettings/PhoneNumber": "6012314234324",
-			"IClientBillingSettings/CurrencyCode": "MYR",
-			"IOrganizationProfileSettings/CountryCode": "MY",
+			//	"IClientBillingSettings/CurrencyCode": "MYR",
+			//	"IOrganizationProfileSettings/CountryCode": "MY",
 			"IOnboardingSettings/Objectives": ["Monitor", "Approve", "TrackTime"],
 			"IOnboardingSettings/Objectives@odata.type": "#Collection(String)",
 			"ITimeTrackingSettings/AllowedDevices": ["Mobile", "Kiosk", "Web"],
@@ -146,8 +154,6 @@ Cypress.Commands.add("GrabOwnerToken", () => {
 		expect(response.status).to.eq(200);
 		Cypress.env("personId", response.body.value[0].id);
 		Cypress.env("userId", response.body.value[0].userId);
-		//	const personId = response.body.value[0].id
-		//	const userId = response.body.value[0].userId
 		cy.log(Cypress.env("personId"));
 
 		cy.api({
@@ -340,7 +346,6 @@ Cypress.Commands.add("CreatePeople", () => {
 		},
 	}).then((response) => {
 		expect(response.status).to.eq(200);
-		//	const userId_A = response.body.value[0].id;
 		const userId_B = response.body.responses[1].body.id;
 		cy.log(EmailId_UserA);
 		cy.log(EmailId_UserB);
