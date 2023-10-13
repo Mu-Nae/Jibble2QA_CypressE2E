@@ -5,10 +5,10 @@
    > Node.js latest v18.17.1
    > cypress version 13.2.0
 
-2. Clone process
+2. Clone steps
 
-- git clone https://github.com/Jibble2QA/Jibble2QA_CypressE2E.git
-- Once clone go to Jibble2QA_CypressE2E folder run command : npm i , Node module folder will be installed
-- To execute cypress , once same folder run command : npx cypress open
-- Select browser on the executed cypress browser
+- Hit command: git clone https://github.com/Jibble2QA/Jibble2QA_CypressE2E.git
+- Next go to Jibble2QA_CypressE2E folder run command : npm i , Node module folder will be installed
+- To execute cypress , on same folder run command : npx cypress open
+- On the executed cypress page > Choose the browser that you want to run the scripts 
 - To open test file click > Spec > choose Jibble2 folder > choose specific file
