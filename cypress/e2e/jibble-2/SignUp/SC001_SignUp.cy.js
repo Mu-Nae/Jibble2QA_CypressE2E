@@ -21,7 +21,7 @@ describe("Signup Process", function () {
 		onSignUpPage.getVisitSignUpPage();
 		onSignUpPage.getSignUpPageDataFillIn(
 			"Cypress End to End Test",
-			Email_Id,
+			EmailId_Owner,
 			"testing123"
 		);
 		onSignUpPage.getRecapchaEnabled();
@@ -41,7 +41,7 @@ describe("Signup Process", function () {
 		onSignUpPage.getSubmitDevicePage();
 		onSignUpPage.selectReferrerPayrollPandateam();
 		onSignUpPage.getSubmitReferrerPage();
-
+		cy.wait(3000);
 		onDashboardPage.waitForDashboardPageLoadFully();
 		onDashboardPage.acceptDataTrackingCookies();
 		onDashboardPage.clickGetStarted();

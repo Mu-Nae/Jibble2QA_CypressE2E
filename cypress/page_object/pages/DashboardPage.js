@@ -1,5 +1,6 @@
 export class DashboardPage {
 	waitForDashboardPageLoadFully() {
+		cy.wait(5000);
 		cy.intercept("https://identity.test.jibble.io/connect/userinfo").as(
 			"getLoginIdentity"
 		);

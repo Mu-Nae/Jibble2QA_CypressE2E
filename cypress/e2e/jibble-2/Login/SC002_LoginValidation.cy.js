@@ -6,7 +6,7 @@ describe("SC002_Login Validation with multiple data", () => {
 		onLoginPage.getLoginPageUrl();
 	});
 
-	it.only("TC001_Invalid Email and Invalid Password", () => {
+	it("TC001_Invalid Email and Invalid Password", () => {
 		cy.fixture("InvalidCredential").then((data) => {
 			data.forEach((userdata) => {
 				onLoginPage.getEmail(userdata.email);

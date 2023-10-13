@@ -89,7 +89,7 @@ export class MenuPage {
 	}
 
 	verifyPageAlreadySignedOut() {
-		cy.wait(5000);
+		cy.wait(10000);
 		cy.url().should("include", "/login"); // need to verify text instead url
 	}
 }

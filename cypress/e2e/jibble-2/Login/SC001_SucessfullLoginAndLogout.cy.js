@@ -16,6 +16,7 @@ describe("SC001 Successful Login and Logout", () => {
 		onLoginPage.getPassword("testing123");
 		onLoginPage.getSubmitLoginPage().should("not.be.disabled").click();
 		onDashboardPage.waitForDashboardPageLoadFully();
+		cy.wait(3000);
 		onDashboardPage.verifyDashboardUrl();
 		onDashboardPage.acceptDataTrackingCookies();
 		onDashboardPage.clickGetStarted();

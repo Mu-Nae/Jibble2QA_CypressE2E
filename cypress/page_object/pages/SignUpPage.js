@@ -35,6 +35,7 @@ export class SignUpPage {
 	}
 
 	getOrganizationNameAndPhoneNumber(OrganisationName, phoneNumber) {
+		cy.wait(5000);
 		cy.intercept("https://identity.test.jibble.io/connect/userinfo").as(
 			"getLoginIdentity"
 		);
