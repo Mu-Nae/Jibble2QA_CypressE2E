@@ -12,3 +12,6 @@
 - To execute cypress , on same folder run command : npx cypress open
 - On the executed cypress page > Choose the browser that you want to run the scripts 
 - To open test file click > Spec > choose Jibble2 folder > choose specific file
+
+
+Change 
